@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/videocollab/static/css/main.2cce8147.chunk.css",
+    "main.js": "/videocollab/static/js/main.2a90949c.chunk.js",
+    "main.js.map": "/videocollab/static/js/main.2a90949c.chunk.js.map",
+    "runtime~main.js": "/videocollab/static/js/runtime~main.113361f0.js",
+    "runtime~main.js.map": "/videocollab/static/js/runtime~main.113361f0.js.map",
+    "static/js/2.97eb1cff.chunk.js": "/videocollab/static/js/2.97eb1cff.chunk.js",
+    "static/js/2.97eb1cff.chunk.js.map": "/videocollab/static/js/2.97eb1cff.chunk.js.map",
+    "index.html": "/videocollab/index.html",
+    "precache-manifest.cb7938c7bc8f7fedbd9ba9c6b0fb906e.js": "/videocollab/precache-manifest.cb7938c7bc8f7fedbd9ba9c6b0fb906e.js",
+    "service-worker.js": "/videocollab/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/videocollab/static/css/main.2cce8147.chunk.css.map",
+    "static/media/video.mp4": "/videocollab/static/media/video.b220a35d.mp4"
+  }
+}
