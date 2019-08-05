@@ -7,8 +7,12 @@ const io = require('socket.io')(server);
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+const port = 8000;
+server.listen(port);
+console.log('listening on port ', port);
 
 io.on('connection', (client) => {
     client.on('subscribeToTimer', (playState, playTime) => {
@@ -27,7 +31,5 @@ io.on('connection', (client) => {
 
 
   // app.listen(9000);
-  const port = 8000;
-  server.listen(port);
-  console.log('listening on port ', port);
+
   
