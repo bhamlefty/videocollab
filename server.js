@@ -1,8 +1,16 @@
+
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
 const io = require('socket.io')();
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 io.on('connection', (client) => {
-
     client.on('subscribeToTimer', (playState, playTime) => {
       console.log('Playstate:', playState+" PlayTime: "+playTime);
       // io.emit('playController', {curPlayState: playState, curPlayTime: playTime})
@@ -12,15 +20,13 @@ io.on('connection', (client) => {
       if(playState==="Pause"){
         io.emit('playController', {curPlayState: playState, curPlayTime: playTime})
       }
-
-       
     });
   });
 
 
 
 
-  
+  // app.listen(9000);
   const port = 8000;
   io.listen(port);
   console.log('listening on port ', port);
