@@ -2,12 +2,12 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')();
+const io = require('socket.io')(server);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '/build', 'index.html'));
 });
 
 io.on('connection', (client) => {
@@ -28,6 +28,6 @@ io.on('connection', (client) => {
 
   // app.listen(9000);
   const port = 8000;
-  io.listen(port);
+  server.listen(port);
   console.log('listening on port ', port);
   
