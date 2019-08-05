@@ -11,8 +11,7 @@ io.on('connection', (client) => {
       if(playState==="Pause"){
         io.emit('playController', {curPlayState: playState, curPlayTime: playTime})
       }
-     
-    
+
        
     });
   });
