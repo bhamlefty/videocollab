@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/videocollab/static/css/main.0f9769aa.chunk.css",
-    "main.js": "/videocollab/static/js/main.f1738d0f.chunk.js",
-    "main.js.map": "/videocollab/static/js/main.f1738d0f.chunk.js.map",
+    "main.js": "/videocollab/static/js/main.c57c5c41.chunk.js",
+    "main.js.map": "/videocollab/static/js/main.c57c5c41.chunk.js.map",
     "runtime~main.js": "/videocollab/static/js/runtime~main.113361f0.js",
     "runtime~main.js.map": "/videocollab/static/js/runtime~main.113361f0.js.map",
-    "static/js/2.d95e4d7e.chunk.js": "/videocollab/static/js/2.d95e4d7e.chunk.js",
-    "static/js/2.d95e4d7e.chunk.js.map": "/videocollab/static/js/2.d95e4d7e.chunk.js.map",
+    "static/js/2.21006864.chunk.js": "/videocollab/static/js/2.21006864.chunk.js",
+    "static/js/2.21006864.chunk.js.map": "/videocollab/static/js/2.21006864.chunk.js.map",
     "index.html": "/videocollab/index.html",
-    "precache-manifest.7cf5a41ca56c82ef43e164b825a11639.js": "/videocollab/precache-manifest.7cf5a41ca56c82ef43e164b825a11639.js",
+    "precache-manifest.c8839541e6109312dea2dbccb5cb944e.js": "/videocollab/precache-manifest.c8839541e6109312dea2dbccb5cb944e.js",
     "service-worker.js": "/videocollab/service-worker.js",
     "static/css/main.0f9769aa.chunk.css.map": "/videocollab/static/css/main.0f9769aa.chunk.css.map",
     "static/media/video.mp4": "/videocollab/static/media/video.b220a35d.mp4"

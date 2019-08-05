@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e3ddacffa5ad21ac6cf3e5c18ed7a6db",
+    "revision": "bc0f20d0903c91d7b4fb1548c823793b",
     "url": "/videocollab/index.html"
   },
   {
-    "revision": "ed55c596511ec9d7b738",
+    "revision": "30bb5a871508752cc004",
     "url": "/videocollab/static/css/main.0f9769aa.chunk.css"
   },
   {
-    "revision": "c887cf1362aa59de0ea0",
-    "url": "/videocollab/static/js/2.d95e4d7e.chunk.js"
+    "revision": "b84ca42db0d65accf6d9",
+    "url": "/videocollab/static/js/2.21006864.chunk.js"
   },
   {
-    "revision": "ed55c596511ec9d7b738",
-    "url": "/videocollab/static/js/main.f1738d0f.chunk.js"
+    "revision": "30bb5a871508752cc004",
+    "url": "/videocollab/static/js/main.c57c5c41.chunk.js"
   },
   {
     "revision": "748f8ad2efd60d983116",
