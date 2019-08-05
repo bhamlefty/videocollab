@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/videosharing/static/css/main.0f9769aa.chunk.css",
-    "main.js": "/videosharing/static/js/main.cc392e43.chunk.js",
-    "main.js.map": "/videosharing/static/js/main.cc392e43.chunk.js.map",
-    "runtime~main.js": "/videosharing/static/js/runtime~main.78372412.js",
-    "runtime~main.js.map": "/videosharing/static/js/runtime~main.78372412.js.map",
-    "static/js/2.e1eb0783.chunk.js": "/videosharing/static/js/2.e1eb0783.chunk.js",
-    "static/js/2.e1eb0783.chunk.js.map": "/videosharing/static/js/2.e1eb0783.chunk.js.map",
-    "index.html": "/videosharing/index.html",
-    "precache-manifest.443b0a4d871dfbc66d178e69bea57666.js": "/videosharing/precache-manifest.443b0a4d871dfbc66d178e69bea57666.js",
-    "service-worker.js": "/videosharing/service-worker.js",
-    "static/css/main.0f9769aa.chunk.css.map": "/videosharing/static/css/main.0f9769aa.chunk.css.map",
-    "static/media/video.mp4": "/videosharing/static/media/video.b220a35d.mp4"
+    "main.css": "/videocollab/static/css/main.0f9769aa.chunk.css",
+    "main.js": "/videocollab/static/js/main.c57c5c41.chunk.js",
+    "main.js.map": "/videocollab/static/js/main.c57c5c41.chunk.js.map",
+    "runtime~main.js": "/videocollab/static/js/runtime~main.113361f0.js",
+    "runtime~main.js.map": "/videocollab/static/js/runtime~main.113361f0.js.map",
+    "static/js/2.21006864.chunk.js": "/videocollab/static/js/2.21006864.chunk.js",
+    "static/js/2.21006864.chunk.js.map": "/videocollab/static/js/2.21006864.chunk.js.map",
+    "index.html": "/videocollab/index.html",
+    "precache-manifest.c8839541e6109312dea2dbccb5cb944e.js": "/videocollab/precache-manifest.c8839541e6109312dea2dbccb5cb944e.js",
+    "service-worker.js": "/videocollab/service-worker.js",
+    "static/css/main.0f9769aa.chunk.css.map": "/videocollab/static/css/main.0f9769aa.chunk.css.map",
+    "static/media/video.mp4": "/videocollab/static/media/video.b220a35d.mp4"
   }
 }
