@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
 
 const port = 8000;
 const PORT = process.env.PORT || 5000;
-server.listen(PORT);
+app.listen(PORT);
 console.log('listening on port ', PORT);
 
 io.on('connection', (client) => {
