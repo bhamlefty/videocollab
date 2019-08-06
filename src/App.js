@@ -29,8 +29,14 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log("compdidmount")
-    socket.emit('subscribeToTimer', "Pause", 0)
+    this.setState({
+      playState: "Pause",
+      playTime: 0
+    }, ()=> {
+
+      socket.emit('subscribeToTimer', "Pause", 0)
+     })
+    
   }
 
 
