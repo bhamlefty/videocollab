@@ -42,6 +42,11 @@
   margin-right: auto;
   
 }
-#myVideo{
+#myVideo::-webkit-media-controls-overlay-play-button {
+  display: none;
+}
 
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none;
 }
