@@ -1,19 +1,19 @@
 
 const express = require('express');
 const app = express();
-const server = require('http').Server(app);
+const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const path = require('path')
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../../build')));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', './index.html'));
 });
 
 const port = 8000;
 const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+server.listen(PORT);
 console.log('listening on port ', PORT);
 
 io.on('connection', (client) => {
