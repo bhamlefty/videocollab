@@ -6,7 +6,7 @@ import {video} from "./Video/video.mp4"
 import { Socket } from 'dgram';
 import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
-const  socket = openSocket('http://localhost:5000');
+const  socket = openSocket('/');
 // const  socket = "/"
 class App extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ class App extends Component {
 
 
   playVid=()=>{
+      console.log("called")
       this.setState({playState: "Play"})
       let vid = document.getElementById("myVideo"); 
       vid.ontimeupdate = function() {
