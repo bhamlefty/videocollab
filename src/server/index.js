@@ -26,6 +26,9 @@ io.on('connection', (client) => {
       if(playState==="Pause"){
         io.emit('playController', {curPlayState: playState, curPlayTime: playTime})
       }
+      if(playState==="Intial"){
+        io.emit('playController', {curPlayState: "Play", curPlayTime: 0})
+      }
     });
   });
 

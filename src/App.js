@@ -15,10 +15,8 @@ class App extends Component {
     this.state = {
       playTime: 10,
       playMode: "sync",
-      message: "",
-      playFunc: "test",
       curPlayTime: 0,
-      videosrc: "https://www.youtube.com/watch?v=Raf9bVk75s8"
+      videosrc: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
     };
     subscribeToTimer((playState) => 
     
@@ -30,7 +28,7 @@ class App extends Component {
 
   componentDidMount(){
     this.setState({
-      playState: "Pause",
+      playState: "Play",
       playTime: 0
     }, ()=> {
 
@@ -144,7 +142,7 @@ pauseAsync=()=>{
       <div className="videoSycnWrapper">
          <h1>Synchronized Video Viewing</h1>
          <div className="videoWrapper">
-          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" seeking="true"controls preload="auto"></video>
+          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
        
         Play State: {this.state.playState}
