@@ -30,13 +30,26 @@ class App extends Component {
 
   componentDidMount(){
     console.log("compdidmount")
-    socket.emit('subscribeToTimer', "Play", this.state.playTime)
+    socket.emit('subscribeToTimer', "Pause", 0)
   }
 
 
   componentDidUpdate() {
     let vid = document.getElementById("myVideo");
     if(this.state.playState==="Play"){
+
+        // Show loading animation.
+        var playPromise = vid.play();
+
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            vid.play()
+          })
+          .catch(error => {
+            vid.pause()
+          });
+        }
+
       vid.play()
     }else{
       vid.pause()
@@ -127,7 +140,7 @@ pauseAsync=()=>{
       <div className="videoSycnWrapper">
          <h1>Synchronized Video Viewing</h1>
          <div className="videoWrapper">
-          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" seeking="true"controls preload></video>
+          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" seeking="true"controls preload="none"></video>
          </div>
        
         Play State: {this.state.playState}
