@@ -28,10 +28,6 @@ class App extends Component {
     }));
   }
 
-  componentDidMount(){
-    socket.emit('subscribeToTimer', "Pause", 0)
-  }
-
 
   componentDidUpdate() {
     let vid = document.getElementById("myVideo");
@@ -57,7 +53,7 @@ class App extends Component {
         playTime: vid.currentTime
       }, ()=> {
         // alert(this.state.playTime)
-        console.log("adfasdfasdf")
+        //console.log("adfasdfasdf")
         socket.emit('subscribeToTimer', "Play", this.state.playTime)
        })
       // socket.emit('subscribeToTimer', "Play", this.state.playTime) 
@@ -124,7 +120,7 @@ pauseAsync=()=>{
   render() {
     return (
       <div className="videoSycnWrapper">
-         <h1>High framerate video collaboration prototype</h1>
+         <h1>Synchronized Video Viewing</h1>
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" seeking="true"controls preload></video>
          </div>
