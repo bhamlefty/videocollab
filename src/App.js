@@ -49,8 +49,6 @@ class App extends Component {
             vid.pause()
           });
         }
-
-      vid.play()
     }else{
       vid.pause()
     }
