@@ -8,6 +8,7 @@ import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
 // const  socket = "/"
+let vid = document.getElementById("myVideo");
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,7 @@ class App extends Component {
 
   componentDidUpdate() {
     if(this.state.playState==="Play"){
-      let vid = document.getElementById("myVideo"); 
+       
       vid.play()
     }else{
       let vid = document.getElementById("myVideo"); 
@@ -42,8 +43,8 @@ class App extends Component {
 
 
   playVid=()=>{
-      console.log("called")
-      this.setState({playState: "Play"})
+      //console.log("called")
+      //this.setState({playState: "Play"})
       let vid = document.getElementById("myVideo"); 
       vid.ontimeupdate = function() {
         document.getElementById("demo").innerHTML = vid.currentTime;
