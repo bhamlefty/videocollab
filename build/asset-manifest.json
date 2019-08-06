@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/videocollab/static/css/main.0f9769aa.chunk.css",
-    "main.js": "/videocollab/static/js/main.23020817.chunk.js",
-    "main.js.map": "/videocollab/static/js/main.23020817.chunk.js.map",
+    "main.js": "/videocollab/static/js/main.54cc870b.chunk.js",
+    "main.js.map": "/videocollab/static/js/main.54cc870b.chunk.js.map",
     "runtime~main.js": "/videocollab/static/js/runtime~main.113361f0.js",
     "runtime~main.js.map": "/videocollab/static/js/runtime~main.113361f0.js.map",
     "static/js/2.4b3c9139.chunk.js": "/videocollab/static/js/2.4b3c9139.chunk.js",
     "static/js/2.4b3c9139.chunk.js.map": "/videocollab/static/js/2.4b3c9139.chunk.js.map",
     "index.html": "/videocollab/index.html",
-    "precache-manifest.e6ac7273887da0d57a65614288d59e1f.js": "/videocollab/precache-manifest.e6ac7273887da0d57a65614288d59e1f.js",
+    "precache-manifest.90e23e2ac816b7df2992d021fd387dd4.js": "/videocollab/precache-manifest.90e23e2ac816b7df2992d021fd387dd4.js",
     "service-worker.js": "/videocollab/service-worker.js",
     "static/css/main.0f9769aa.chunk.css.map": "/videocollab/static/css/main.0f9769aa.chunk.css.map",
     "static/media/video.mp4": "/videocollab/static/media/video.b220a35d.mp4"

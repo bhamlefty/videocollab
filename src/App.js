@@ -6,8 +6,8 @@ import {video} from "./Video/video.mp4"
 import { Socket } from 'dgram';
 import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
-const  socket = openSocket('http://localhost:8000');
-
+const  socket = openSocket('http://localhost:5000');
+// const  socket = "/"
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,17 @@ class App extends Component {
       curPlayTime: playState.curPlayTime
     }));
   }
+  componentDidMount(){
+    this.initSocket()
+  }
 
+initSocket=()=>{
+    const socket=io(socket)
+    socket.on('connect', ()=>{
+      console.log("adfasdf")
+    })
+    
+  }
 
   componentDidUpdate() {
     if(this.state.playState==="Play"){

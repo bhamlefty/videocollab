@@ -17,12 +17,13 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "yarn build && gh-pages -d build",
-    "dev": "node index.js",
-    "start": "react-scripts start",
+    "start": "node src/server/index.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "gh-pages": "^1.1.0"
   },
