@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-  
+    document.getElementById("SyncPause").click()
   }
 
 
@@ -141,7 +141,7 @@ pauseAsync=()=>{
         Play State: {this.state.playState}
         
         <button onClick={this.playVid}>Sync Play</button>
-        <button onClick={this.pauseVid}>Sycn Pause</button>
+        <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
         <button onClick={this.playAsync}>Async Play</button>
         <button onClick={this.pauseAsync}>Async Pause</button>
         <p>Client Video Timecode: <span id="demo"></span></p>
