@@ -54,6 +54,7 @@ class App extends Component {
         playTime: vid.currentTime
       }, ()=> {
         // alert(this.state.playTime)
+        console.log("adfasdfasdf")
         socket.emit('subscribeToTimer', "Play", this.state.playTime)
        })
       // socket.emit('subscribeToTimer', "Play", this.state.playTime) 
@@ -64,7 +65,7 @@ class App extends Component {
     
     vid.ontimeupdate = function() {
       document.getElementById("demo").innerHTML = vid.currentTime;
-      console.log(vid.currentTime)
+      //console.log(vid.currentTime)
     };
     this.setState({
       playState: "Pause",
