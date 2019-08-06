@@ -1,6 +1,9 @@
 {
   "name": "socket-timer",
   "version": "0.1.0",
+  "engines": {
+    "node": "10.16.0"
+  }
   "private": true,
   "homepage": "https://bhamlefty.github.io/videocollab/",
   "dependencies": {
@@ -37,8 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ],
-    "engines": {
-      "node": "10.16.0"
-    }
+ 
   }
 }
