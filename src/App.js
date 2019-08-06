@@ -29,6 +29,15 @@ class App extends Component {
     }));
   }
 
+  componentDidMount(){
+    subscribeToTimer((playState) => 
+    
+    this.setState({ 
+      playState: "Pause",
+      curPlayTime: 0
+    }));
+  }
+
 
   componentDidUpdate() {
     let vid = document.getElementById("myVideo");
