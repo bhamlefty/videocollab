@@ -17,7 +17,6 @@ class App extends Component {
       playMode: "sync",
       message: "",
       playFunc: "test",
-      playState: "Pause",
       curPlayTime: 0,
       videosrc: "https://www.youtube.com/watch?v=Raf9bVk75s8"
     };
@@ -30,12 +29,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    subscribeToTimer((playState) => 
-    
-    this.setState({ 
-      playState: "Pause",
-      curPlayTime: 0
-    }));
+    socket.emit('subscribeToTimer', "Pause", 0)
   }
 
 
