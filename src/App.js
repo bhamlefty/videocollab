@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    document.getElementById("SyncPause").click()
+    socket.emit('subscribeToTimer', "Play", this.state.curPlayTime)
   }
 
 
