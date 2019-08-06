@@ -26,17 +26,7 @@ class App extends Component {
       curPlayTime: playState.curPlayTime
     }));
   }
-  componentDidMount(){
-    this.initSocket()
-  }
 
-initSocket=()=>{
-    const socket=io(socket)
-    socket.on('connect', ()=>{
-      console.log("adfasdf")
-    })
-    
-  }
 
   componentDidUpdate() {
     if(this.state.playState==="Play"){
