@@ -6,7 +6,7 @@ import {video} from "./Video/video.mp4"
 import { Socket } from 'dgram';
 import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
-const  socket = openSocket('/');
+const  socket = openSocket('https://shielded-sea-84002.herokuapp.com/');
 // const  socket = "/"
 class App extends Component {
   constructor(props) {
