@@ -138,7 +138,7 @@ pauseAsync=()=>{
       <div className="videoSycnWrapper">
          <h1>Synchronized Video Viewing</h1>
          <div className="videoWrapper">
-          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" seeking="true"controls preload="none"></video>
+          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" seeking="true"controls preload="auto"></video>
          </div>
        
         Play State: {this.state.playState}
