@@ -12,8 +12,9 @@ app.get('/', function(req, res) {
 });
 
 const port = 8000;
-server.listen(port);
-console.log('listening on port ', port);
+const PORT = process.env.PORT || 5000;
+server.listen(PORT);
+console.log('listening on port ', PORT);
 
 io.on('connection', (client) => {
     client.on('subscribeToTimer', (playState, playTime) => {
