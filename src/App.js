@@ -28,6 +28,11 @@ class App extends Component {
     }));
   }
 
+  componentDidMount(){
+    console.log("compdidmount")
+    socket.emit('subscribeToTimer', "Play", this.state.playTime)
+  }
+
 
   componentDidUpdate() {
     let vid = document.getElementById("myVideo");
