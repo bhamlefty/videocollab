@@ -27,13 +27,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({
-      playState: "Play",
-      playTime: 0
-    }, ()=> {
-
-      socket.emit('subscribeToTimer', "Pause", 0)
-     })
+    this.pauseVid()
     
   }
 
