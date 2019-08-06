@@ -36,7 +36,6 @@ class App extends Component {
 
   componentDidUpdate() {
     let vid = document.getElementById("myVideo");
-    let that=this;
     if(this.state.playState==="Play"){
 
         // Show loading animation.
@@ -44,7 +43,7 @@ class App extends Component {
 
         if (playPromise !== undefined) {
           playPromise.then(_ => {
-            that.playVid()
+            vid.play()
           })
           .catch(error => {
             vid.pause()
