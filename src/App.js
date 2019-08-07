@@ -7,7 +7,7 @@ import Switch from "react-switch";
 import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
-
+let numClients=1;
 // const  socket = openSocket('http://localhost:8000');
 const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
 // const  socket = "/"
@@ -21,7 +21,7 @@ class App extends Component {
       latencyObj: {},
       curPlayTime: 0,
       latencyDelay: 0,
-      checked: true,
+      checked: false,
       videosrc: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
     };
     timer((time) => 
@@ -90,7 +90,9 @@ getClientLatency=()=>{
     let latencyObj= this.state.latencyObj
     if(latencyObj !== {}){
       latencyValues=Object.values(latencyObj)
+      numClients=latencyValues.length
       let highestLatency=Math.max(...latencyValues)
+      
       console.log(latencyValues)
       // console.log(highestLatency)
       aggregateLatency= highestLatency-latencyObj[uid]
@@ -121,11 +123,6 @@ getClientLatency=()=>{
             // alert(this.state.playTime)
             socket.emit('subscribeToTimer', "Play", this.state.playTime)
           })
-
-        
-        
-     
-      
 
       
   }
@@ -194,23 +191,44 @@ pauseAsync=()=>{
     return (
       <div className="videoSycnWrapper">
          <h1>Synchronized Video Viewing</h1>
+         <div className="block">
+           Currently Viewing: {numClients}
+        </div>
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
-       
-        Play State: {this.state.playState}
         <button onClick={this.playVid}>Sync Play</button>
         <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
         <button onClick={this.playAsync}>Async Play</button>
         <button onClick={this.pauseAsync}>Async Pause</button>
 
         <p>Client Video Timecode: <span id="demo"></span></p>
-        From sever PlayState: {this.state.playState}
+     
+        
+
+        <div className="block" >
+          Dynamic Latency Control (WIP) <Switch onChange={this.handleLatencyChange} checked={this.state.checked} />
+        </div>
+       
+        <div className="block">
+           Timer: {this.state.time}
+        </div>
+       
+        <div className="block">
+           UUID: {this.state.uuid}
+        </div>
+        
+        <div className="block">
+          Aggregated Latency: {aggregateLatency}
+        </div>
+
+        <div className="block">
         From sever curPlayTime: {this.state.curPlayTime}
-        <Switch onChange={this.handleLatencyChange} checked={this.state.checked} />
-        Timer: {this.state.time}
-        UUID: {this.state.uuid}
-        Aggregated Latency: {aggregateLatency}
+        </div>
+        <div className="block">
+        From sever PlayState: {this.state.playState}
+        </div>
+        
         {/* latencyTest: {this.state.latencyTest} */}
       </div>
     );

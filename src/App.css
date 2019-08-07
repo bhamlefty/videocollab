@@ -50,3 +50,8 @@
 video::-webkit-media-controls-overlay-play-button {
   display: none;
 }
+
+.block{
+  display: block;
+  margin: 16px;
+}
