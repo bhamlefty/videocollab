@@ -94,13 +94,13 @@ getClientLatency=()=>{
     if(latencyObj !== {}){
       let latencyValues=Object.values(latencyObj)
       let highestLatency=Math.max(...latencyValues)
-      // console.log(latencyValues)
+      console.log(latencyValues)
       // console.log(highestLatency)
       aggregateLatency= highestLatency-latencyObj[uid]
-      if(aggregateLatency<2){
+      //if(aggregateLatency<2){
         //console.log("aggregatedLatency", aggregateLatency)
       // this.setState({latencyDelay: aggregateLatency})
-      }
+      //}
       
     }
   }
