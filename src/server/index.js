@@ -26,18 +26,19 @@ let addDataToLatencyObj = (clientID, latency) => {
     //latencyAryEmit.push(latencyObj)
     //console.log("New", latencyObj)
   }
+  console.log(latencyObj)
 }
 
 
 // const port = 8000;
 io.on('connection', (client) => {
-  
+  latencyObj={}
   // let latencyAry= []
     client.on('timer', (clientTime, clientId) => {
       let serverTime= new Date().getTime()
       let dif = serverTime-clientTime
       let latency = dif
-      let numClients=io.engine.clientsCount/3;
+      let numClients=io.engine.clientsCount/4;
       console.log("numberClientsConnected: ", numClients)
 
       addDataToLatencyObj(clientId, latency)

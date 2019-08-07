@@ -66,18 +66,14 @@ class App extends Component {
    
     let vid = document.getElementById("myVideo");
     if(this.state.playState==="Play"){
-
-        // Show loading animation.
-        var playPromise = vid.play();
-
-        if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            vid.play()
-          })
-          .catch(error => {
-            vid.pause()
-          });
-        }
+      if(this.state.checked){
+        setTimeout(()=>{
+          vid.play();
+        },aggregateLatency)
+      }else{
+        vid.play();
+      }
+        
     }else{
       vid.pause()
     }
@@ -89,10 +85,11 @@ class App extends Component {
   }
 
 getClientLatency=()=>{
+    let latencyValues={}
     let uid= this.state.uuid
     let latencyObj= this.state.latencyObj
     if(latencyObj !== {}){
-      let latencyValues=Object.values(latencyObj)
+      latencyValues=Object.values(latencyObj)
       let highestLatency=Math.max(...latencyValues)
       console.log(latencyValues)
       // console.log(highestLatency)
@@ -115,11 +112,8 @@ getClientLatency=()=>{
         //console.log(vid.currentTime)
       };
       
-
-      if(this.state.checked){
         console.log("Dynamic Latency Adjustment: ", aggregateLatency)
-        //Auto Correct Latency
-        setTimeout(() => {
+      
           this.setState({
             playState: "Play",
             playTime: vid.currentTime
@@ -128,19 +122,9 @@ getClientLatency=()=>{
             socket.emit('subscribeToTimer', "Play", this.state.playTime)
           })
 
-        }, aggregateLatency)
         
-      }else{
-        this.setState({
-          playState: "Play",
-          playTime: vid.currentTime
-        }, ()=> { 
-          // alert(this.state.playTime)
-          socket.emit('subscribeToTimer', "Play", this.state.playTime)
-
-        })
-
-      }
+        
+     
       
 
       
