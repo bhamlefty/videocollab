@@ -36,7 +36,7 @@ io.on('connection', (client) => {
     client.on('timer', (clientTime, clientId) => {
       let serverTime= new Date().getTime()
       let dif = serverTime-clientTime
-      let latency = dif/2
+      let latency = dif
       let numClients=io.engine.clientsCount/3;
       console.log("numberClientsConnected: ", numClients)
 

@@ -3,9 +3,11 @@ import './App.css';
 import { subscribeToTimer, timer } from './api';
 import {video} from "./Video/video.mp4"
 import { Socket } from 'dgram';
+import Switch from "react-switch";
 import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
+
 // const  socket = openSocket('http://localhost:8000');
 const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
 // const  socket = "/"
@@ -19,14 +21,14 @@ class App extends Component {
       latencyObj: {},
       curPlayTime: 0,
       latencyDelay: 0,
+      checked: true,
       videosrc: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
     };
     timer((time) => 
     this.setState({ 
       timer: time,
     }));
-
-
+    this.handleLatencyChange = this.handleLatencyChange.bind(this);
     subscribeToTimer((playState) => 
     this.setState({ 
       playState: playState.curPlayState,
@@ -82,6 +84,10 @@ class App extends Component {
     vid.currentTime=this.state.curPlayTime
   }
 
+  handleLatencyChange(checked) {
+    this.setState({ checked });
+  }
+
 getClientLatency=()=>{
     let uid= this.state.uuid
     let latencyObj= this.state.latencyObj
@@ -108,22 +114,34 @@ getClientLatency=()=>{
         document.getElementById("demo").innerHTML = vid.currentTime;
         //console.log(vid.currentTime)
       };
-      console.log("Dynamic Latency Adjustment: ", aggregateLatency)
+      
 
-      //Auto Correct Latency
-      setTimeout(() => {
+      if(this.state.checked){
+        console.log("Dynamic Latency Adjustment: ", aggregateLatency)
+        //Auto Correct Latency
+        setTimeout(() => {
+          this.setState({
+            playState: "Play",
+            playTime: vid.currentTime
+          }, ()=> { 
+            // alert(this.state.playTime)
+            socket.emit('subscribeToTimer', "Play", this.state.playTime)
+          })
+
+        }, aggregateLatency)
+        
+      }else{
         this.setState({
           playState: "Play",
           playTime: vid.currentTime
-        }, ()=> {
-          
+        }, ()=> { 
           // alert(this.state.playTime)
           socket.emit('subscribeToTimer', "Play", this.state.playTime)
-        
-         })
-        // socket.emit('subscribeToTimer', "Play", this.state.playTime) 
 
-      }, this.state.latencyDelay*aggregateLatency)
+        })
+
+      }
+      
 
       
   }
@@ -201,9 +219,11 @@ pauseAsync=()=>{
         <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
         <button onClick={this.playAsync}>Async Play</button>
         <button onClick={this.pauseAsync}>Async Pause</button>
+
         <p>Client Video Timecode: <span id="demo"></span></p>
         From sever PlayState: {this.state.playState}
         From sever curPlayTime: {this.state.curPlayTime}
+        <Switch onChange={this.handleLatencyChange} checked={this.state.checked} />
         Timer: {this.state.time}
         UUID: {this.state.uuid}
         Aggregated Latency: {this.state.latencyDelay}
