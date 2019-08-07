@@ -210,7 +210,7 @@ pauseAsync=()=>{
         <Switch onChange={this.handleLatencyChange} checked={this.state.checked} />
         Timer: {this.state.time}
         UUID: {this.state.uuid}
-        Aggregated Latency: {this.state.latencyDelay}
+        Aggregated Latency: {aggregateLatency}
         {/* latencyTest: {this.state.latencyTest} */}
       </div>
     );
