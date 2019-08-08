@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
-// const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
-const  socket = openSocket('http://localhost:8000');
+const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
+// const  socket = openSocket('http://localhost:8000');
 function subscribeToTimer(cb) {
   socket.on('playController', playFunc => cb(playFunc));
   // socket.emit('subscribeToTimer', "Inital", "Hello")
