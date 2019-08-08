@@ -182,7 +182,7 @@ pauseAsync=()=>{
           that.setState({
             playTime: vid.currentTime
           }, ()=> {
-            console.log("madeit", this.state.playTime)
+            console.log("madeit", that.state.playTime)
             socket.emit('subscribeToTimer', "Pause", that.state.playTime)
            })
         };
