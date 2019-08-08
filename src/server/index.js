@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../../build')));
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname, + './index.html');
-  
+
 });
 
 let test = (latencyAry) => {
@@ -45,7 +45,7 @@ io.on('connection', (client) => {
       addDataToLatencyObj(clientId, latency)
 
       console.log("serverTime: ", serverTime, "clientTime: ", clientTime, "latency:  ", latency, "clientId:  ", clientId)
-      //console.log(latencyAry)
+      //console.log(latenitcyAry)
     })
     client.on('subscribeToTimer', (playState, playTime) => {
       console.log('Playstate:', playState+" PlayTime: "+playTime);
