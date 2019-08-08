@@ -22,7 +22,7 @@ class App extends Component {
       curPlayTime: 0,
       latencyDelay: 0,
       checked: false,
-      videosrc: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+      videosrc: "https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FMSF19087_Workplace_Vertilcals_YIR_v05.mp4?alt=media&token=5d72233a-ca4f-41d2-a692-118f845ae743"
     };
     timer((time) => 
     this.setState({ 
