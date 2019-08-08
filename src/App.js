@@ -52,10 +52,9 @@ class App extends Component {
     socket.on('connect', () => {
       console.log('connected')
       // socket.emit('subscribeToTimer', "Play", this.state.playTime)
-      setInterval(() => {
-        socket.emit('timer', new Date().getTime(), this.state.uuid)
-        
-      }, 2000);
+      // setInterval(() => {
+      //   socket.emit('timer', new Date().getTime(), this.state.uuid)
+      // }, 2000);
     })
   }
 
@@ -66,6 +65,7 @@ class App extends Component {
    
     let vid = document.getElementById("myVideo");
     if(this.state.playState==="Play"){
+      socket.emit('timer', new Date().getTime(), this.state.uuid)
       if(this.state.checked){
         setTimeout(()=>{
           vid.play();
@@ -75,6 +75,7 @@ class App extends Component {
       }
         
     }else{
+      socket.emit('timer', new Date().getTime(), this.state.uuid)
       vid.pause()
     }
     vid.currentTime=this.state.curPlayTime
@@ -159,7 +160,6 @@ playAsync=()=>{
       document.getElementById("demo").innerHTML = vid.currentTime;
       vid.play()
     };
-  
 }
 
 pauseAsync=()=>{
