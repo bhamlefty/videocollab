@@ -8,8 +8,8 @@ import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
 let numClients=1;
-const  socket = openSocket('http://localhost:8000');
-// const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
+// const  socket = openSocket('http://localhost:8000');
+const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
 // const  socket = "/"
 let aggregateLatency=0; 
 class App extends Component {
