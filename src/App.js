@@ -195,7 +195,7 @@ pauseAsync=()=>{
            Currently Viewing: {numClients}
         </div>
          <div className="videoWrapper">
-          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
+          <video id="myVideo" height="300px" src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
         <button onClick={this.playVid}>Sync Play</button>
         <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
