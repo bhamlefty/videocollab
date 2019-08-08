@@ -21,11 +21,10 @@ let test = (latencyAry) => {
 let addDataToLatencyObj = (clientID, latency) => {
   if(clientID in latencyObj){ 
     latencyObj[clientID]= latency
-    //console.log("Same ",latencyObj )
+    //console.log("Updated Existing Latency ",latencyObj )
   }else{
     latencyObj[clientID]= latency
-    //latencyAryEmit.push(latencyObj)
-    //console.log("New", latencyObj)
+    //console.log("Added New Latency to latencyObj", latencyObj)
   }
   console.log(latencyObj)
 }

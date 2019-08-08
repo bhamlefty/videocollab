@@ -8,8 +8,8 @@ import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
 let numClients=1;
-// const  socket = openSocket('http://localhost:8000');
-const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
+const  socket = openSocket('http://localhost:8000');
+// const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
 // const  socket = "/"
 let aggregateLatency=0; 
 class App extends Component {
@@ -196,10 +196,10 @@ pauseAsync=()=>{
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
-
          {this.state.playState==="Pause" && this.state.playMode==="sync" ? 
          <button onClick={this.playVid}>Play</button>: <button id="SyncPause" onClick={this.pauseVid}>Pause</button>
         }
+        
         {this.state.playState==="Pause" && this.state.playMode==="async" ? 
         <button onClick={this.playAsync}>Play</button>:<button onClick={this.pauseAsync}>Pause</button>
         }
