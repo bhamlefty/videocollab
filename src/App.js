@@ -96,16 +96,12 @@ getClientLatency=()=>{
       
       console.log(latencyValues)
       // console.log(highestLatency)
+
       if(latencyObj[uid]>0){
         aggregateLatency= highestLatency-latencyObj[uid]
       }else{
         aggregateLatency= 0
       }
-      
-      //if(aggregateLatency<2){
-        //console.log("aggregatedLatency", aggregateLatency)
-      // this.setState({latencyDelay: aggregateLatency})
-      //}
       
     }
   }
@@ -204,7 +200,7 @@ pauseAsync=()=>{
         <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
         <button onClick={this.playAsync}>Async Play</button>
         <button onClick={this.pauseAsync}>Async Pause</button>
-
+        <p>This is a test<span id="demo"></span></p>
         <p>Client Video Timecode: <span id="demo"></span></p>
      
         
