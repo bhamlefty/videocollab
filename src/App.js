@@ -18,6 +18,7 @@ class App extends Component {
     this.state = {
       playTime: 10,
       playMode: "sync",
+      playState: "Pause",
       latencyObj: {},
       curPlayTime: 0,
       latencyDelay: 0,
@@ -131,7 +132,6 @@ getClientLatency=()=>{
 
   pauseVid=()=>{
     let vid = document.getElementById("myVideo"); 
-    
     vid.ontimeupdate = function() {
       document.getElementById("demo").innerHTML = vid.currentTime;
       //console.log(vid.currentTime)
@@ -196,13 +196,13 @@ pauseAsync=()=>{
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
-         
-         {this.state.playState==="Pause" ? 
-         <button onClick={this.playVid}>Sync Play</button>: <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
+
+         {this.state.playState==="Pause" && this.state.playMode==="sync" ? 
+         <button onClick={this.playVid}>Play</button>: <button id="SyncPause" onClick={this.pauseVid}>Pause</button>
         }
-        
-        <button onClick={this.playAsync}>Async Play</button>
-        <button onClick={this.pauseAsync}>Async Pause</button>
+        {this.state.playState==="Pause" && this.state.playMode==="async" ? 
+        <button onClick={this.playAsync}>Play</button>:<button onClick={this.pauseAsync}>Pause</button>
+        }
   
         <p>Client Video Timecode: <span id="demo"></span></p>
 
