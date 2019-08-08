@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, '../../build')));
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname, + './index.html');
+  
 });
 
 let test = (latencyAry) => {

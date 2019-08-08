@@ -8,8 +8,8 @@ import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
 let numClients=1;
-// const  socket = openSocket('http://localhost:8000');
-const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
+const  socket = openSocket('http://localhost:8000');
+// const  socket = openSocket('https://shielded-sea-84002.herokuapp.com');
 // const  socket = "/"
 let aggregateLatency=0; 
 class App extends Component {
@@ -95,7 +95,12 @@ getClientLatency=()=>{
       
       console.log(latencyValues)
       // console.log(highestLatency)
-      aggregateLatency= highestLatency-latencyObj[uid]
+      if(latencyObj[uid]>0){
+        aggregateLatency= highestLatency-latencyObj[uid]
+      }else{
+        aggregateLatency= 0
+      }
+      
       //if(aggregateLatency<2){
         //console.log("aggregatedLatency", aggregateLatency)
       // this.setState({latencyDelay: aggregateLatency})
@@ -144,8 +149,7 @@ getClientLatency=()=>{
   }
 
 
-playAsync=()=>{
-      
+playAsync=()=>{  
     let vid = document.getElementById("myVideo"); 
     this.setState({
       playState: "Play",
@@ -159,7 +163,6 @@ playAsync=()=>{
 }
 
 pauseAsync=()=>{
-
   let vid = document.getElementById("myVideo"); 
   vid.ontimeupdate = function() {
     document.getElementById("demo").innerHTML = vid.currentTime;
@@ -195,7 +198,7 @@ pauseAsync=()=>{
            Currently Viewing: {numClients}
         </div>
          <div className="videoWrapper">
-          <video id="myVideo" height="300px" src={this.state.videosrc} seeking="true"controls preload="auto"></video>
+          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
         <button onClick={this.playVid}>Sync Play</button>
         <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
