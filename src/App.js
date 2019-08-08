@@ -196,33 +196,36 @@ pauseAsync=()=>{
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
-        <button onClick={this.playVid}>Sync Play</button>
-        <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
+         
+         {this.state.playState==="Pause" ? 
+         <button onClick={this.playVid}>Sync Play</button>: <button id="SyncPause" onClick={this.pauseVid}>Sync Pause</button>
+        }
+        
         <button onClick={this.playAsync}>Async Play</button>
         <button onClick={this.pauseAsync}>Async Pause</button>
-        <p>This is a test<span id="demo"></span></p>
+  
         <p>Client Video Timecode: <span id="demo"></span></p>
-     
-        
+
+        <div className="block">
+        Server Timecode: {this.state.curPlayTime}
+        </div>
+        <div className="block">
+        Server Playstate: {this.state.playState}
+        </div>
+
+        <div className="block">
+           Client UUID: {this.state.uuid}
+        </div>
 
         <div className="block" >
           Dynamic Latency Control (WIP) <Switch onChange={this.handleLatencyChange} checked={this.state.checked} />
-        </div>
-       
-        <div className="block">
-           UUID: {this.state.uuid}
         </div>
         
         <div className="block">
           Aggregated Latency: {aggregateLatency}
         </div>
 
-        <div className="block">
-        From sever curPlayTime: {this.state.curPlayTime}
-        </div>
-        <div className="block">
-        From sever PlayState: {this.state.playState}
-        </div>
+   
         
         {/* latencyTest: {this.state.latencyTest} */}
       </div>
