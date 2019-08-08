@@ -21,7 +21,7 @@ class App extends Component {
       latencyObj: {},
       curPlayTime: 0,
       latencyDelay: 0,
-      checked: false,
+      checked: true,
       videosrc: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
     };
     timer((time) => 
