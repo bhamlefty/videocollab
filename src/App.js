@@ -8,8 +8,8 @@ import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
 let numClients=1;
-const  socket = openSocket('http://localhost:8000');
-// const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
+// const  socket = openSocket('http://localhost:8000');
+const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
 // const  socket = "/"
 let aggregateLatency=0; 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
     super(props);
     this.state = {
       playTime: 10,
-      playMode: "sync",
+      syncMode: true,
       playState: "Pause",
       latencyObj: {},
       curPlayTime: 0,
@@ -30,6 +30,7 @@ class App extends Component {
       timer: time,
     }));
     this.handleLatencyChange = this.handleLatencyChange.bind(this);
+    this.toggleSyncMode = this.toggleSyncMode.bind(this);
     subscribeToTimer((playState) => 
     this.setState({ 
       playState: playState.curPlayState,
@@ -86,6 +87,13 @@ class App extends Component {
     this.setState({ checked });
   }
 
+  toggleSyncMode() {
+    console.log("toggleSyncMode")
+    this.setState({ 
+      syncMode: !this.state.syncMode
+     });
+  }
+
 getClientLatency=()=>{
     let latencyValues={}
     let uid= this.state.uuid
@@ -107,8 +115,7 @@ getClientLatency=()=>{
     }
   }
 
-  playVid=()=>{
-     
+  playVid=()=>{  
       //console.log("called")
       //this.setState({playState: "Play"})
       let vid = document.getElementById("myVideo"); 
@@ -126,8 +133,6 @@ getClientLatency=()=>{
             // alert(this.state.playTime)
             socket.emit('subscribeToTimer', "Play", this.state.playTime)
           })
-
-      
   }
 
   pauseVid=()=>{
@@ -140,7 +145,6 @@ getClientLatency=()=>{
       playState: "Pause",
       playTime: vid.currentTime
     }, ()=> {
-      this.getClientLatency()
       socket.emit('subscribeToTimer', "Pause", this.state.playTime)
      })
   }
@@ -173,7 +177,7 @@ pauseAsync=()=>{
   updatePlayhead=()=>{
       let that = this
       let vid = document.getElementById("myVideo");
-      if(this.state.playState==="Pause" && this.state.playMode==="sync" && this.state.curPlayTime !== vid.currentTime){  
+      if(this.state.playState==="Pause" && this.state.syncMode && this.state.curPlayTime !== vid.currentTime){  
           console.log("update", vid.currentTime);
           that.setState({
             playTime: vid.currentTime
@@ -190,19 +194,36 @@ pauseAsync=()=>{
     return (
       <div className="videoSycnWrapper">
          <h1>Synchronized Video Viewing</h1>
-         <div className="block">
-           Currently Viewing: {numClients}
+         <div>
+           Active Viewers: {numClients}
         </div>
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
          </div>
-         {this.state.playState==="Pause" && this.state.playMode==="sync" ? 
-         <button onClick={this.playVid}>Play</button>: <button id="SyncPause" onClick={this.pauseVid}>Pause</button>
+         {this.state.syncMode === true ? 
+         <div>
+           {this.state.playState==="Pause" ?
+            <button className="player-controls-btns" onClick={this.playVid}>Play</button>: <button className="player-controls-btns" id="SyncPause" onClick={this.pauseVid}>Pause</button>
+          }
+         </div>:<span></span>
         }
+
+        {this.state.syncMode === false ? 
+        <div>
+          {this.state.playState==="Pause" ?
+          <button className="player-controls-btns" onClick={this.playAsync}>Play</button>:<button className="player-controls-btns" onClick={this.pauseAsync}>Pause</button>
+          }
+        </div>:<span></span>
+        }
+
+        <span>
+          Synchronize Playback:
+        </span>
+        <Switch onChange={this.toggleSyncMode} checked={this.state.syncMode} onColor="#6264a7" checkedIcon/>
+{/* <Switch onChange={this.toggleSyncMode} checked={this.state.toggleSyncMode} /> */}
+
         
-        {this.state.playState==="Pause" && this.state.playMode==="async" ? 
-        <button onClick={this.playAsync}>Play</button>:<button onClick={this.pauseAsync}>Pause</button>
-        }
+ 
   
         <p>Client Video Timecode: <span id="demo"></span></p>
 
@@ -222,7 +243,7 @@ pauseAsync=()=>{
         </div>
         
         <div className="block">
-          Aggregated Latency: {aggregateLatency}
+          Latency Sync Adjustment: {aggregateLatency}
         </div>
 
    
