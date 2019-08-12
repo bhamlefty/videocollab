@@ -54,9 +54,9 @@ class App extends Component {
     socket.on('connect', () => {
       console.log('connected')
       // socket.emit('subscribeToTimer', "Play", this.state.playTime)
-      // setInterval(() => {
-      //   socket.emit('timer', new Date().getTime(), this.state.uuid)
-      // }, 2000);
+      setInterval(() => {
+        socket.emit('timer', new Date().getTime(), this.state.uuid)
+      }, 2000);
     })
   }
 
