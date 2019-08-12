@@ -44,9 +44,6 @@ class App extends Component {
     // socket.emit('subscribeToTimer', "sdfasdf", this.state.curPlayTime)
     this.initSocket()
     
-    setInterval(() => {
-      this.getClientLatency()
-    }, 2000);
   }
 
   initSocket=()=>{
@@ -117,6 +114,7 @@ getClientLatency=()=>{
 
   playVid=()=>{  
       //console.log("called")
+      this.getClientLatency()
       //this.setState({playState: "Play"})
       let vid = document.getElementById("myVideo"); 
       vid.ontimeupdate = function() {
