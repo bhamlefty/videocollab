@@ -8,8 +8,8 @@ import io from 'socket.io-client'
 import openSocket from 'socket.io-client';
 const uuidv1 = require('uuid/v1');
 let numClients=1;
-// const  socket = openSocket('http://localhost:8000');
-const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
+const  socket = openSocket('http://localhost:8000');
+// const  socket = openSocket('https://limitless-lake-54723.herokuapp.com');
 // const  socket = "/"
 let aggregateLatency=0; 
 class App extends Component {
@@ -22,6 +22,7 @@ class App extends Component {
       latencyObj: {},
       curPlayTime: 0,
       latencyDelay: 0,
+      enterViewing: false,
       checked: false,
       videosrc: "https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FMSF19087_Workplace_Vertilcals_YIR_v05.mp4?alt=media&token=5d72233a-ca4f-41d2-a692-118f845ae743"
     };
@@ -88,6 +89,13 @@ class App extends Component {
     console.log("toggleSyncMode")
     this.setState({ 
       syncMode: !this.state.syncMode
+     });
+  }
+
+  enterViewing=()=>{
+    console.log("asdfasdfasdf")
+    this.setState({ 
+      enterViewing: true
      });
   }
 
@@ -191,12 +199,17 @@ pauseAsync=()=>{
   render() {
     return (
       <div className="videoSycnWrapper">
+          {this.state.enterViewing === false ?
+          <div className="bg">
+            <button className="enter" onClick={this.enterViewing}>Enter Viewing</button>
+          </div>:<span> </span>
+          }
          <h1>Synchronized Video Viewing</h1>
          <div>
            Active Viewers: {numClients}
         </div>
          <div className="videoWrapper">
-          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true"controls preload="auto"></video>
+          <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true" controls preload="auto"></video>
          </div>
          {this.state.syncMode === true ? 
          <div>
