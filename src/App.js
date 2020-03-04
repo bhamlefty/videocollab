@@ -255,7 +255,7 @@ pauseAsync=()=>{
             <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V7.mp4?alt=media&token=6128a443-ca9b-49e6-a2b1-3bdbbc0b75db")}}>Calling</button>
             <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V6.mp4?alt=media&token=1c715048-a1a6-4460-87cf-144892e56bd3")}}>Meetings</button>
             <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTFL_Subtitles_030420.mp4?alt=media&token=6a84b6ab-0424-49de-810c-6c8031f62553")}}>TFL</button>
-            <button>Devices</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FBOD_Devices_V10HQ.mp4?alt=media&token=f872680c-8097-48e0-9021-293c21f05fff")}}>Devices</button>
          </div>
         <span>
           Synchronize Playback:
