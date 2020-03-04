@@ -23,8 +23,10 @@ class App extends Component {
       curPlayTime: 0,
       latencyDelay: 0,
       enterViewing: false,
+      curPass: "",
+      pass: "BOD4945",
       checked: false,
-      videosrc: "https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FMSF19087_Workplace_Vertilcals_YIR_v05.mp4?alt=media&token=5d72233a-ca4f-41d2-a692-118f845ae743"
+      videosrc: "https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V7.mp4?alt=media&token=6128a443-ca9b-49e6-a2b1-3bdbbc0b75db"
     };
     timer((time) => 
     this.setState({ 
@@ -58,6 +60,21 @@ class App extends Component {
     })
   }
 
+  checkpass=()=>{
+
+  }
+
+  updatePass=(event)=>{
+    if(event.target.value===this.state.pass){
+      this.setState({ 
+        enterViewing: true
+       });
+    }
+  }
+
+  updateVidSRC=(src)=>{
+    this.setState({videosrc: src})
+  }
   
 
 
@@ -93,10 +110,11 @@ class App extends Component {
   }
 
   enterViewing=()=>{
-    console.log("asdfasdfasdf")
-    this.setState({ 
-      enterViewing: true
-     });
+    if(this.state.curPass===this.state.pass){
+      this.setState({ 
+        enterViewing: true
+       });
+    }
   }
 
 getClientLatency=()=>{
@@ -201,7 +219,8 @@ pauseAsync=()=>{
       <div className="videoSycnWrapper">
           {this.state.enterViewing === false ?
           <div className="bg">
-            <button className="enter" onClick={this.enterViewing}>Enter Viewing</button>
+             <input className="enterPass" type="password" placeholder="Enter Password" onChange={this.updatePass}></input>
+            {/* <button className="enter" onClick={this.enterViewing}>Join</button> */}
           </div>:<span> </span>
           }
          <h1>Synchronized Video Viewing</h1>
@@ -210,6 +229,12 @@ pauseAsync=()=>{
         </div>
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true" controls preload="auto"></video>
+         </div>
+         <div className="videoContainer">
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V7.mp4?alt=media&token=6128a443-ca9b-49e6-a2b1-3bdbbc0b75db")}}>Calling</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V6.mp4?alt=media&token=1c715048-a1a6-4460-87cf-144892e56bd3")}}>Meetings</button>
+            <button>TFL</button>
+            <button>Devices</button>
          </div>
          {this.state.syncMode === true ? 
          <div>
