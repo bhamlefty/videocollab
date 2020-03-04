@@ -26,7 +26,7 @@ let addDataToLatencyObj = (clientID, latency) => {
     latencyObj[clientID]= latency
     //console.log("Added New Latency to latencyObj", latencyObj)
   }
-  console.log(latencyObj)
+  //console.log(latencyObj)
 }
 
 
@@ -39,20 +39,28 @@ io.on('connection', (client) => {
       let dif = serverTime-clientTime
       let latency = dif/4
       let numClients=io.engine.clientsCount/4;
-      console.log("numberClientsConnected: ", numClients)
+      // console.log("numberClientsConnected: ", numClients)
 
       addDataToLatencyObj(clientId, latency)
 
-      console.log("serverTime: ", serverTime, "clientTime: ", clientTime, "latency:  ", latency, "clientId:  ", clientId)
+      // console.log("serverTime: ", serverTime, "clientTime: ", clientTime, "latency:  ", latency, "clientId:  ", clientId)
       //console.log(latenitcyAry)
     })
+
+    client.on('changeVid', (src) => {
+      console.log(src)
+      console.log("made it")
+      io.emit('setVid', {videosrc: src})
+    })
+
+
     client.on('subscribeToTimer', (playState, playTime) => {
       console.log('Playstate:', playState+" PlayTime: "+playTime);
      
       // io.emit('playController', {curPlayState: playState, curPlayTime: playTime})
       if(playState==="Play"){
         io.emit('playController', {curPlayState: playState, curPlayTime: playTime, latencyObj: latencyObj})
-        console.log("this is ary ", latencyObj)
+        // console.log("this is ary ", latencyObj)
       }
       if(playState==="Pause"){
         io.emit('playController', {curPlayState: playState, curPlayTime: playTime, latencyObj: latencyObj})
@@ -60,7 +68,6 @@ io.on('connection', (client) => {
       if(playState==="Intial"){
         io.emit('playController', {curPlayState: "Pause", curPlayTime: 0, latencyObj: latencyObj})
       }
-     
     });
   });
 

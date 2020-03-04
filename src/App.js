@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { subscribeToTimer, timer } from './api';
+import { subscribeToTimer, timer, changeVid } from './api';
 import {video} from "./Video/video.mp4"
 import { Socket } from 'dgram';
 import Switch from "react-switch";
@@ -32,6 +32,12 @@ class App extends Component {
     this.setState({ 
       timer: time,
     }));
+
+    changeVid((src) => 
+    this.setState({ 
+      videosrc: src.videosrc,
+    }));
+
     this.handleLatencyChange = this.handleLatencyChange.bind(this);
     this.toggleSyncMode = this.toggleSyncMode.bind(this);
     subscribeToTimer((playState) => 
@@ -60,9 +66,7 @@ class App extends Component {
     })
   }
 
-  checkpass=()=>{
 
-  }
 
   updatePass=(event)=>{
     if(event.target.value===this.state.pass){
@@ -74,6 +78,7 @@ class App extends Component {
 
   updateVidSRC=(src)=>{
     this.setState({videosrc: src})
+    socket.emit('changeVid', src)
   }
   
 
@@ -230,12 +235,7 @@ pauseAsync=()=>{
          <div className="videoWrapper">
           <video id="myVideo" height="300px" onTimeUpdate={this.updatePlayhead} src={this.state.videosrc} seeking="true" controls preload="auto"></video>
          </div>
-         <div className="videoContainer">
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V7.mp4?alt=media&token=6128a443-ca9b-49e6-a2b1-3bdbbc0b75db")}}>Calling</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V6.mp4?alt=media&token=1c715048-a1a6-4460-87cf-144892e56bd3")}}>Meetings</button>
-            <button>TFL</button>
-            <button>Devices</button>
-         </div>
+        
          {this.state.syncMode === true ? 
          <div>
            {this.state.playState==="Pause" ?
@@ -251,15 +251,18 @@ pauseAsync=()=>{
           }
         </div>:<span></span>
         }
-
+         <div className="videoContainer">
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V7.mp4?alt=media&token=6128a443-ca9b-49e6-a2b1-3bdbbc0b75db")}}>Calling</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V6.mp4?alt=media&token=1c715048-a1a6-4460-87cf-144892e56bd3")}}>Meetings</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTFL_Subtitles_030420.mp4?alt=media&token=6a84b6ab-0424-49de-810c-6c8031f62553")}}>TFL</button>
+            <button>Devices</button>
+         </div>
         <span>
           Synchronize Playback:
         </span>
         <Switch onChange={this.toggleSyncMode} checked={this.state.syncMode} onColor="#6264a7" checkedIcon/>
 {/* <Switch onChange={this.toggleSyncMode} checked={this.state.toggleSyncMode} /> */}
 
-        
- 
   
         <p>Client Video Timecode: <span id="demo"></span></p>
 

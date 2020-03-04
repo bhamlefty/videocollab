@@ -6,10 +6,15 @@ function subscribeToTimer(cb) {
   // socket.emit('subscribeToTimer', "Inital", "Hello")
 }
 
+function changeVid(cb) {
+  socket.on('setVid', changeFunc => cb(changeFunc));
+  // socket.emit('subscribeToTimer', "Inital", "Hello")
+}
+
 function timer(cb) {
   socket.on('setTimer', timerFunc => cb(timerFunc));
   // socket.emit('subscribeToTimer', "Inital", 0)
 }
 
 
-export {subscribeToTimer, timer};
+export {subscribeToTimer, timer, changeVid};
