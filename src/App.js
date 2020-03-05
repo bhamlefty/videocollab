@@ -252,10 +252,10 @@ pauseAsync=()=>{
         </div>:<span></span>
         }
          <div className="videoContainer">
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V7.mp4?alt=media&token=6128a443-ca9b-49e6-a2b1-3bdbbc0b75db")}}>Calling</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V6.mp4?alt=media&token=1c715048-a1a6-4460-87cf-144892e56bd3")}}>Meetings</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTFL_Subtitles_030420.mp4?alt=media&token=6a84b6ab-0424-49de-810c-6c8031f62553")}}>TFL</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FBOD_Devices_V10HQ.mp4?alt=media&token=f872680c-8097-48e0-9021-293c21f05fff")}}>Devices</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V9.mp4?alt=media&token=5de0e2cd-d28b-41d4-8f6e-d86ed7de9a6a")}}>Calling</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V9.mp4?alt=media&token=352933ca-b1b9-49af-ae5c-a4bf08a9df56")}}>Meetings</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTFL_Captions_030520_v3.mp4?alt=media&token=c4868914-f104-4a2f-ba9a-d3ea6312a9db")}}>TFL</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FBOD_Devices_V12HQ.mp4?alt=media&token=569c1090-e4e9-4ec2-af43-101317fd4b7d")}}>Devices</button>
          </div>
         <span>
           Synchronize Playback:
