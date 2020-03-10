@@ -252,10 +252,10 @@ pauseAsync=()=>{
         </div>:<span></span>
         }
          <div className="videoContainer">
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V9.mp4?alt=media&token=5de0e2cd-d28b-41d4-8f6e-d86ed7de9a6a")}}>Calling</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V9.mp4?alt=media&token=352933ca-b1b9-49af-ae5c-a4bf08a9df56")}}>Meetings</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTFL_Captions_030520_v3.mp4?alt=media&token=c4868914-f104-4a2f-ba9a-d3ea6312a9db")}}>TFL</button>
-            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FBOD_Devices_V12HQ.mp4?alt=media&token=569c1090-e4e9-4ec2-af43-101317fd4b7d")}}>Devices</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Calling_BOD_V9_Subtitles.mp4?alt=media&token=fc32c4ab-6c8f-4635-902b-691574d65665")}}>Calling</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTeams_Meetings_BOD_V9_Subtitles.mp4?alt=media&token=b28e878c-4b56-442f-bff9-7671616a8cf8")}}>Meetings</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FTFL_Subtitles_030620_v1.mp4?alt=media&token=f8e36624-bbd1-46a4-b492-08f3e26c644a")}}>TFL</button>
+            <button onClick={()=>{this.updateVidSRC("https://firebasestorage.googleapis.com/v0/b/elevaetbackend.appspot.com/o/Test%2FBOD_Devices_V14HQ_Captions.mp4?alt=media&token=683b4fd0-fc90-4365-bc10-21c0ec0d5d19")}}>Devices</button>
          </div>
         <span>
           Synchronize Playback:
